@@ -3,44 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pengumuman Kelulusan SDN Kebon Kosong 02</title>
+    <title>Pengumuman Kelulusan SDN Kebon Kosong 02 Tahun Pelajaran 2024/2025</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
         /* Mendefinisikan variabel CSS untuk kemudahan pengaturan warna dan ukuran */
         :root {
-            --primary-color: #4CAF50; /* Hijau utama */
-            --primary-dark: #388E3C;  /* Hijau gelap */
-            --secondary-color: #64B5F6; /* Biru muda untuk efek pulse */
-            --background-light: #e0f2f7; /* Latar belakang sangat muda */
+            /* Warna utama diambil dari hijau/tosca pada logo (buku) */
+            --primary-color: #0F9D58; /* Hijau yang lebih dalam */
+            --primary-dark: #0A7F41;  /* Hijau gelap */
+
+            /* Warna sekunder diambil dari merah/oranye pada logo (pena/garis perisai) */
+            --secondary-color: #DB4437; /* Merah oranye */
+
+            /* Warna aksen dari biru pada logo (garis perisai luar) */
+            --accent-blue: #4285F4; /* Biru */
+
+            /* Latar belakang sangat lembut, mendekati putih, untuk menonjolkan logo */
+            --background-start: #FDFDFD; /* Hampir putih */
+            --background-end: #F0F0F0; /* Abu-abu sangat muda */
+
             --text-dark: #333;
             --text-medium: #555;
             --shadow-light: rgba(0, 0, 0, 0.08);
             --shadow-medium: rgba(0, 0, 0, 0.15);
-            --success-bg: #e8f5e9;
-            --success-text: #2e7d32;
-            --error-bg: #ffebee;
-            --error-text: #c62828;
-            --lulus-bg: #dcedc8;
-            --lulus-text: #33691e;
-            --tidak-lulus-bg: #ffcdd2;
-            --tidak-lulus-text: #b71c1c;
+
+            /* Warna untuk status sukses dan error */
+            --success-bg: #e8f5e9; /* Latar hijau muda */
+            --success-text: #2e7d32; /* Teks hijau gelap */
+            --error-bg: #ffebee; /* Latar merah muda */
+            --error-text: #c62828; /* Teks merah gelap */
+
+            /* Warna khusus untuk badge LULUS dan TIDAK LULUS */
+            --lulus-bg: #dcedc8; /* Latar hijau muda untuk LULUS */
+            --lulus-text: #33691e; /* Teks hijau gelap untuk LULUS */
+            --tidak-lulus-bg: #ffcdd2; /* Latar merah muda untuk TIDAK LULUS */
+            --tidak-lulus-text: #b71c1c; /* Teks merah gelap untuk TIDAK LULUS */
         }
 
         body {
             font-family: 'Poppins', sans-serif;
-            /* Latar belakang gradien yang elegan dan modern */
-            background: linear-gradient(135deg, var(--background-light) 0%, #c8e6c9 100%);
-            /* Menghapus centering flexbox agar bisa di-scroll */
-            /* display: flex; */
-            /* justify-content: center; */
-            /* align-items: center; */
-            /* min-height: 100vh; */
+            /* Latar belakang gradien yang elegan dan modern, harmonis dengan warna logo */
+            background: linear-gradient(135deg, var(--background-start) 0%, var(--background-end) 100%);
             margin: 0;
-            padding: 0; /* Padding body diatur ke 0, padding akan ada di container */
+            padding: 0;
             box-sizing: border-box;
             overflow-x: hidden; /* Mencegah scrollbar horizontal */
-            /* overflow-y: auto; */ /* Memungkinkan scrollbar vertikal jika konten melebihi tinggi viewport */
             min-height: 100vh; /* Pastikan background mengisi seluruh tinggi */
         }
 
@@ -75,50 +83,51 @@
             height: 130px;
             border-radius: 50%; /* Bentuk logo bulat */
             object-fit: cover; /* Memastikan gambar mengisi area tanpa terdistorsi */
-            box-shadow: 0 8px 20px var(--shadow-medium); /* Bayangan yang lebih menonjol untuk logo */
-            animation: pulse 2.5s infinite ease-in-out; /* Animasi pulse yang lebih lambat dan halus */
-            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transisi halus untuk efek hover */
-            border: 3px solid var(--primary-color); /* Border dengan warna utama */
+            box-shadow: 0 8px 20px var(--shadow-medium);
+            /* Menggunakan warna aksen biru untuk efek pulse, harmonis dengan logo */
+            animation: pulse 2.5s infinite ease-in-out;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 3px solid var(--primary-color); /* Border dengan warna utama (hijau) */
         }
 
         .logo:hover {
-            transform: scale(1.08); /* Logo sedikit lebih membesar saat di-hover */
-            box-shadow: 0 12px 25px var(--shadow-medium); /* Bayangan lebih intens saat di-hover */
+            transform: scale(1.08);
+            box-shadow: 0 12px 25px var(--shadow-medium);
         }
 
-        /* Keyframes untuk animasi pulse logo */
+        /* Keyframes untuk animasi pulse logo dengan warna aksen biru */
         @keyframes pulse {
             0% {
                 transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(var(--secondary-color), 0.7); /* Efek lingkaran pulse awal */
+                box-shadow: 0 0 0 0 rgba(var(--accent-blue), 0.7); /* Menggunakan accent-blue */
             }
             70% {
-                transform: scale(1.06); /* Membesar sedikit lebih banyak */
-                box-shadow: 0 0 0 25px rgba(var(--secondary-color), 0); /* Efek lingkaran menyebar lebih besar */
+                transform: scale(1.06);
+                box-shadow: 0 0 0 25px rgba(var(--accent-blue), 0); /* Menggunakan accent-blue */
             }
             100% {
                 transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(var(--secondary-color), 0);
+                box-shadow: 0 0 0 0 rgba(var(--accent-blue), 0);
             }
         }
 
         h1 {
-            color: var(--text-dark); /* Warna teks judul */
+            color: var(--text-dark);
             margin-bottom: 30px;
-            font-weight: 700; /* Tebal */
-            font-size: 2.2em; /* Ukuran font judul yang lebih besar */
-            line-height: 1.3; /* Spasi baris untuk keterbacaan */
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.05); /* Sedikit bayangan pada teks judul */
+            font-weight: 700;
+            font-size: 2.2em;
+            line-height: 1.3;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
         }
 
         .form-group {
-            margin-bottom: 25px; /* Spasi antar form group */
+            margin-bottom: 25px;
             text-align: left;
         }
 
         label {
             display: block;
-            margin-bottom: 10px; /* Spasi antara label dan input */
+            margin-bottom: 10px;
             color: var(--text-medium);
             font-weight: 600;
             font-size: 1.05em;
@@ -126,59 +135,59 @@
 
         input[type="text"],
         input[type="date"] {
-            width: calc(100% - 24px); /* Lebar input disesuaikan dengan padding */
-            padding: 14px; /* Padding input lebih besar */
-            border: 1px solid #e0e0e0; /* Border abu-abu terang */
-            border-radius: 10px; /* Sudut membulat pada input */
+            width: calc(100% - 24px);
+            padding: 14px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
             font-size: 1.05em;
             color: var(--text-dark);
-            transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transisi halus */
-            background-color: #fdfdfd; /* Latar belakang input sedikit off-white */
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            background-color: #fdfdfd;
         }
 
         input[type="text"]:focus,
         input[type="date"]:focus {
-            border-color: var(--primary-color); /* Border hijau saat input fokus */
-            outline: none; /* Menghilangkan outline default browser */
-            box-shadow: 0 0 8px rgba(var(--primary-color), 0.4); /* Bayangan fokus yang lebih menonjol */
+            border-color: var(--primary-color); /* Tetap hijau utama */
+            outline: none;
+            box-shadow: 0 0 8px rgba(var(--primary-color), 0.4);
         }
 
         button {
-            background-color: var(--primary-color); /* Warna tombol hijau utama */
+            background-color: var(--primary-color); /* Tetap hijau utama */
             color: white;
-            padding: 16px 30px; /* Padding tombol lebih besar */
+            padding: 16px 30px;
             border: none;
-            border-radius: 10px; /* Sudut tombol membulat */
-            font-size: 1.15em; /* Ukuran font tombol lebih besar */
-            font-weight: 700; /* Tebal */
-            cursor: pointer; /* Kursor pointer saat di-hover */
-            transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease; /* Transisi halus */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Bayangan tombol */
+            border-radius: 10px;
+            font-size: 1.15em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         button:hover {
-            background-color: var(--primary-dark); /* Warna tombol sedikit lebih gelap saat di-hover */
-            transform: translateY(-3px); /* Efek naik sedikit saat di-hover */
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Bayangan lebih intens saat di-hover */
+            background-color: var(--primary-dark); /* Tetap hijau gelap */
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
 
         button:active {
-            transform: translateY(0); /* Kembali ke posisi semula saat diklik */
+            transform: translateY(0);
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
         }
 
         #result {
-            margin-top: 35px; /* Spasi di atas div hasil */
-            padding: 25px; /* Padding internal div hasil */
+            margin-top: 35px;
+            padding: 25px;
             border-radius: 12px;
             font-size: 1.1em;
             font-weight: 600;
             text-align: center;
             border: 1px solid;
-            display: none; /* Tersembunyi secara default */
-            animation: slideInResult 0.6s ease-out forwards; /* Animasi masuk untuk div hasil */
+            display: none;
+            animation: slideInResult 0.6s ease-out forwards;
             position: relative;
-            overflow: hidden; /* Memastikan confetti tidak keluar dari batas div hasil */
+            overflow: hidden;
         }
 
         /* Keyframes untuk animasi slide-in hasil */
@@ -188,38 +197,61 @@
         }
 
         #result.success {
-            background-color: var(--success-bg); /* Latar belakang sukses */
-            color: var(--success-text); /* Warna teks sukses */
+            background-color: var(--success-bg);
+            color: var(--success-text);
             border-color: var(--success-text);
         }
 
         #result.error {
-            background-color: var(--error-bg); /* Latar belakang error */
-            color: var(--error-text); /* Warna teks error */
+            background-color: var(--error-bg);
+            color: var(--error-text);
             border-color: var(--error-text);
         }
 
         .status-badge {
             display: inline-block;
-            padding: 8px 16px; /* Padding badge lebih besar */
-            border-radius: 8px; /* Sudut badge membulat */
+            padding: 8px 16px;
+            border-radius: 8px;
             font-weight: 700;
-            margin-top: 15px; /* Spasi di atas badge */
-            animation: bounceIn 0.7s ease-out forwards; /* Animasi bounce untuk badge */
-            font-size: 1.2em; /* Ukuran font badge lebih besar */
-            text-transform: uppercase; /* Teks kapital */
-            letter-spacing: 1px; /* Spasi antar huruf */
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Bayangan badge */
+            margin-top: 15px;
+            animation: bounceIn 0.7s ease-out forwards;
+            font-size: 1.2em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         .status-lulus {
-            background-color: var(--lulus-bg); /* Latar belakang badge LULUS */
-            color: var(--lulus-text); /* Warna teks badge LULUS */
+            background-color: var(--lulus-bg);
+            color: var(--lulus-text);
+        }
+
+        /* Efek baru untuk teks LULUS: Pop dan Warna (berubah ke warna sekunder/merah-oranye) */
+        .status-lulus .lulus-text-effect {
+            display: inline-block; /* Penting untuk transform */
+            animation: lulusPopColor 1.2s ease-out forwards; /* Animasi pop dan warna */
+            font-weight: 800; /* Lebih tebal */
+            text-shadow: 0 0 5px rgba(51, 105, 30, 0.5); /* Sedikit bayangan untuk kedalaman */
+        }
+
+        @keyframes lulusPopColor {
+            0% {
+                transform: scale(1);
+                color: var(--lulus-text);
+            }
+            50% {
+                transform: scale(1.15); /* Membesar sedikit */
+                color: var(--secondary-color); /* Berubah ke warna merah/oranye dari logo */
+            }
+            100% {
+                transform: scale(1);
+                color: var(--lulus-text); /* Kembali ke warna asli */
+            }
         }
 
         .status-tidak-lulus {
-            background-color: var(--tidak-lulus-bg); /* Latar belakang badge TIDAK LULUS */
-            color: var(--tidak-lulus-text); /* Warna teks badge TIDAK LULUS */
+            background-color: var(--tidak-lulus-bg);
+            color: var(--tidak-lulus-text);
         }
 
         /* Keyframes untuk animasi bounce-in badge */
@@ -235,7 +267,7 @@
             .container {
                 padding: 30px;
                 border-radius: 12px;
-                margin: 30px auto; /* Sesuaikan margin untuk mobile */
+                margin: 30px auto;
             }
             h1 {
                 font-size: 1.8em;
@@ -270,7 +302,7 @@
         <div class="logo-container">
             <img src="https://i.imgur.com/NRds9mc.png" alt="Logo SDN Kebon Kosong 02" class="logo">
         </div>
-        <h1>Pengumuman Kelulusan<br>SDN Kebon Kosong 02</h1>
+        <h1>Pengumuman Kelulusan SDN Kebon Kosong 02<br>Tahun Pelajaran 2024/2025</h1>
 
         <div class="form-group">
             <label for="nisn">NISN:</label>
@@ -369,12 +401,12 @@
          * Menggunakan library canvas-confetti.
          */
         function fireConfetti() {
-            // Konfigurasi confetti untuk tampilan yang meriah
+            // Konfigurasi confetti dengan warna yang harmonis dengan logo
             confetti({
                 particleCount: 150, // Jumlah partikel
                 spread: 120,        // Sebaran partikel
                 origin: { y: 0.6 }, // Titik asal confetti (tengah bawah)
-                colors: ['#4CAF50', '#FFD700', '#64B5F6', '#FF6347'], // Warna-warna cerah
+                colors: ['#0F9D58', '#DB4437', '#4285F4', '#FFD700'], // Hijau, Merah/Oranye, Biru, Emas
                 disableForReducedMotion: true // Nonaktifkan untuk pengguna dengan preferensi gerak terbatas
             });
 
@@ -384,7 +416,7 @@
                     particleCount: 100,
                     spread: 90,
                     origin: { x: 1, y: 0.7 }, // Dari kanan atas
-                    colors: ['#4CAF50', '#FFD700', '#64B5F6', '#FF6347'],
+                    colors: ['#0F9D58', '#DB4437', '#4285F4', '#FFD700'],
                     disableForReducedMotion: true
                 });
             }, 200); // Tunda sedikit
@@ -393,7 +425,7 @@
                     particleCount: 100,
                     spread: 90,
                     origin: { x: 0, y: 0.7 }, // Dari kiri atas
-                    colors: ['#4CAF50', '#FFD700', '#64B5F6', '#FF6347'],
+                    colors: ['#0F9D58', '#DB4437', '#4285F4', '#FFD700'],
                     disableForReducedMotion: true
                 });
             }, 400); // Tunda sedikit lagi
@@ -423,20 +455,39 @@
                 // Jika siswa ditemukan
                 let statusBadgeClass = '';
                 let statusText = '';
+                let congratulatoryMessage = ''; // Pesan selamat
 
                 // Menentukan kelas CSS dan teks status berdasarkan status kelulusan
                 if (student.status.toUpperCase() === 'LULUS') {
                     statusBadgeClass = 'status-lulus';
                     statusText = 'LULUS';
                     fireConfetti(); // Panggil efek confetti jika LULUS
+                    congratulatoryMessage = `
+                        <p style="font-size: 1.3em; color: var(--primary-dark); margin-bottom: 15px;">
+                            Selamat, ${student.name}! Anda dinyatakan LULUS!
+                        </p>
+                        <p style="font-size: 0.9em; color: var(--text-medium);">
+                            Kerja kerasmu membuahkan hasil. Teruslah berprestasi dan raih cita-cita!
+                        </p>
+                    `;
+                    // Menambahkan kelas untuk efek pada teks LULUS
+                    statusText = `<span class="lulus-text-effect">${statusText}</span>`;
                 } else {
                     statusBadgeClass = 'status-tidak-lulus';
                     statusText = 'TIDAK LULUS';
+                    congratulatoryMessage = `
+                        <p style="font-size: 1.3em; color: var(--error-text); margin-bottom: 15px;">
+                            Mohon maaf, ${student.name}. Anda dinyatakan TIDAK LULUS.
+                        </p>
+                        <p style="font-size: 0.9em; color: var(--text-medium);">
+                            Jangan menyerah! Ini bukan akhir, tapi awal dari perjuangan baru. Tetap semangat!
+                        </p>
+                    `;
                 }
 
                 resultDiv.className = 'success'; // Menambahkan kelas 'success' untuk styling umum
                 resultDiv.innerHTML = `
-                    <p>Nama: <strong>${student.name}</strong></p>
+                    ${congratulatoryMessage}
                     <p>NISN: <strong>${student.nisn}</strong></p>
                     <p>Rerata Nilai: <strong>${student.average.toFixed(2)}</strong></p>
                     <p>Status Kelulusan: <span class="status-badge ${statusBadgeClass}">${statusText}</span></p>
