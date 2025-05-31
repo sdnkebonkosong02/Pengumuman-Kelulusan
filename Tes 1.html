@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengumuman Kelulusan SDN Kebon Kosong 02</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #4CAF50; /* Hijau utama */
+            --primary-dark: #388E3C;  /* Hijau gelap */
+            --secondary-color: #64B5F6; /* Biru muda */
+            --background-light: #e0f2f7; /* Latar belakang sangat muda */
+            --text-dark: #333;
+            --text-medium: #555;
+            --shadow-light: rgba(0, 0, 0, 0.08);
+            --shadow-medium: rgba(0, 0, 0, 0.15);
+            --success-bg: #e8f5e9;
+            --success-text: #2e7d32;
+            --error-bg: #ffebee;
+            --error-text: #c62828;
+            --lulus-bg: #dcedc8;
+            --lulus-text: #33691e;
+            --tidak-lulus-bg: #ffcdd2;
+            --tidak-lulus-text: #b71c1c;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            /* Latar belakang gradien yang elegan */
+            background: linear-gradient(135deg, var(--background-light) 0%, #c8e6c9 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow: hidden; /* Mencegah scrollbar karena confetti */
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 16px; /* Sudut lebih membulat */
+            box-shadow: 0 15px 40px var(--shadow-medium); /* Bayangan lebih dalam */
+            padding: 50px; /* Padding lebih besar */
+            width: 100%;
+            max-width: 550px; /* Lebar maksimum lebih besar */
+            text-align: center;
+            animation: fadeInScale 1s ease-out forwards; /* Animasi baru */
+            position: relative;
+            z-index: 10; /* Pastikan di atas confetti */
+            border: 1px solid rgba(255, 255, 255, 0.6); /* Border transparan elegan */
+            backdrop-filter: blur(5px); /* Efek blur di belakang kontainer */
+        }
+
+        /* Animasi fade-in dan scale */
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: translateY(-30px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .logo-container {
+            margin-bottom: 35px;
+        }
+
+        .logo {
+            width: 130px; /* Logo sedikit lebih besar */
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 8px 20px var(--shadow-medium); /* Bayangan lebih menonjol */
+            animation: pulse 2.5s infinite ease-in-out; /* Animasi pulse lebih lambat */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 3px solid var(--primary-color); /* Border warna utama */
+        }
+
+        .logo:hover {
+            transform: scale(1.08); /* Lebih membesar saat di-hover */
+            box-shadow: 0 12px 25px var(--shadow-medium);
+        }
+
+        /* Animasi pulse untuk logo */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(var(--secondary-color), 0.7);
+            }
+            70% {
+                transform: scale(1.06); /* Membesar sedikit lebih banyak */
+                box-shadow: 0 0 0 25px rgba(var(--secondary-color), 0); /* Efek lingkaran menyebar lebih besar */
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(var(--secondary-color), 0);
+            }
+        }
+
+        h1 {
+            color: var(--text-dark);
+            margin-bottom: 30px;
+            font-weight: 700;
+            font-size: 2.2em; /* Ukuran font judul lebih besar */
+            line-height: 1.3;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05); /* Sedikit bayangan teks */
+        }
+
+        .form-group {
+            margin-bottom: 25px; /* Spasi antar form group lebih besar */
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px; /* Spasi label dengan input lebih besar */
+            color: var(--text-medium);
+            font-weight: 600;
+            font-size: 1.05em;
+        }
+
+        input[type="text"],
+        input[type="date"] {
+            width: calc(100% - 24px); /* Menyesuaikan padding */
+            padding: 14px; /* Padding input lebih besar */
+            border: 1px solid #e0e0e0; /* Border lebih terang */
+            border-radius: 10px; /* Sudut lebih membulat */
+            font-size: 1.05em;
+            color: var(--text-dark);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            background-color: #fdfdfd;
+        }
+
+        input[type="text"]:focus,
+        input[type="date"]:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 8px rgba(var(--primary-color), 0.4); /* Bayangan fokus lebih menonjol */
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 16px 30px; /* Padding tombol lebih besar */
+            border: none;
+            border-radius: 10px; /* Sudut tombol lebih membulat */
+            font-size: 1.15em; /* Ukuran font tombol lebih besar */
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Bayangan tombol */
+        }
+
+        button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px); /* Efek naik lebih tinggi */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        button:active {
+            transform: translateY(0);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #result {
+            margin-top: 35px; /* Spasi lebih besar dari tombol */
+            padding: 25px; /* Padding hasil lebih besar */
+            border-radius: 12px;
+            font-size: 1.1em;
+            font-weight: 600;
+            text-align: center;
+            border: 1px solid;
+            display: none;
+            animation: slideInResult 0.6s ease-out forwards; /* Animasi baru untuk hasil */
+            position: relative;
+            overflow: hidden; /* Memastikan confetti tidak keluar dari batas */
+        }
+
+        /* Animasi slide-in untuk hasil */
+        @keyframes slideInResult {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #result.success {
+            background-color: var(--success-bg);
+            color: var(--success-text);
+            border-color: var(--success-text);
+        }
+
+        #result.error {
+            background-color: var(--error-bg);
+            color: var(--error-text);
+            border-color: var(--error-text);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 8px 16px; /* Padding badge lebih besar */
+            border-radius: 8px; /* Sudut badge lebih membulat */
+            font-weight: 700;
+            margin-top: 15px; /* Spasi lebih besar */
+            animation: bounceIn 0.7s ease-out forwards; /* Animasi bounce lebih lambat */
+            font-size: 1.2em; /* Ukuran font badge lebih besar */
+            text-transform: uppercase; /* Huruf kapital */
+            letter-spacing: 1px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .status-lulus {
+            background-color: var(--lulus-bg);
+            color: var(--lulus-text);
+        }
+
+        .status-tidak-lulus {
+            background-color: var(--tidak-lulus-bg);
+            color: var(--tidak-lulus-text);
+        }
+
+        /* Animasi bounce-in */
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.1); opacity: 1; }
+            70% { transform: scale(0.95); }
+            100% { transform: scale(1); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px;
+                border-radius: 12px;
+            }
+            h1 {
+                font-size: 1.8em;
+                margin-bottom: 20px;
+            }
+            .logo {
+                width: 100px;
+                height: 100px;
+            }
+            input[type="text"],
+            input[type="date"] {
+                padding: 12px;
+                font-size: 1em;
+            }
+            button {
+                padding: 14px 25px;
+                font-size: 1.05em;
+            }
+            #result {
+                padding: 20px;
+                font-size: 1em;
+            }
+            .status-badge {
+                padding: 6px 12px;
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <img src="https://i.imgur.com/NRds9mc.png" alt="Logo SDN Kebon Kosong 02" class="logo">
+        </div>
+        <h1>Pengumuman Kelulusan Online<br>SDN Kebon Kosong 02</h1>
+
+        <div class="form-group">
+            <label for="nisn">NISN:</label>
+            <input type="text" id="nisn" placeholder="Masukkan NISN Anda" required>
+        </div>
+        <div class="form-group">
+            <label for="dob">Tanggal Lahir:</label>
+            <input type="date" id="dob" required>
+        </div>
+        <button onclick="checkGraduation()">Cek Kelulusan</button>
+
+        <div id="result">
+            </div>
+    </div>
+
+    <script>
+        // --- DATA KELULUSAN SISWA ---
+        // PENTING: Anda perlu memperbarui data ini secara manual jika ada perubahan
+        // atau jika Anda mengupload data Excel baru, konversi ke format JSON ini,
+        // lalu paste di sini.
+        const studentsData = [
+            { nisn: '0126115869', name: 'Abdul Amin', status: 'LULUS', dob: '2012-02-13', average: 92.46 },
+            { nisn: '3125327136', name: 'Asyfa Nazahrah Rizky', status: 'LULUS', dob: '2012-04-23', average: 94.92 },
+            { nisn: '3138584778', name: 'Aulia Zahra Nisa', status: 'LULUS', dob: '2013-03-21', average: 95.61 },
+            { nisn: '3128871301', name: 'Aura Alima Zanetti', status: 'LULUS', dob: '2012-08-27', average: 92.18 },
+            { nisn: '0126990357', name: 'Azizah Azza Fatimah', status: 'LULUS', dob: '2012-11-15', average: 90.66 },
+            { nisn: '0125566337', name: 'Desta Anugrah Pratama', status: 'LULUS', dob: '2012-10-09', average: 92.16 },
+            { nisn: '3123247888', name: 'Deswina Dian Almira', status: 'LULUS', dob: '2012-12-14', average: 94.01 },
+            { nisn: '3138625956', name: 'Fairel Hafidz Atharizz', status: 'LULUS', dob: '2013-03-30', average: 93.54 },
+            { nisn: '0121694793', name: 'Fakhrul Hakimi', status: 'LULUS', dob: '2012-10-08', average: 92.21 },
+            { nisn: '3137955239', name: 'Hamda Assyabiya', status: 'LULUS', dob: '2013-05-14', average: 91.73 },
+            { nisn: '3132400167', name: 'Keanu Al Zahran', status: 'LULUS', dob: '2013-05-08', average: 91.32 },
+            { nisn: '0129390721', name: 'Kharisa Olivia Prianggono', status: 'LULUS', dob: '2012-11-18', average: 94.04 },
+            { nisn: '0131651205', name: 'Khumaira Atshilla', status: 'LULUS', dob: '2013-03-20', average: 94.41 },
+            { nisn: '3133060269', name: 'Marchello Riazdin', status: 'LULUS', dob: '2013-02-25', average: 92.07 },
+            { nisn: '3124587589', name: 'Muhammad Arzhio Wira Pratama', status: 'LULUS', dob: '2012-12-26', average: 92.53 },
+            { nisn: '0138274104', name: 'Nuri Khumairoh', status: 'LULUS', dob: '2013-03-02', average: 91.18 },
+            { nisn: '3126116919', name: 'Pratama Willy Zhafran', status: 'LULUS', dob: '2012-06-25', average: 95.14 },
+            { nisn: '3131833790', name: 'Rayhan Devtom Chaniago', status: 'LULUS', dob: '2013-04-23', average: 93.94 },
+            { nisn: '3123224307', name: 'Rheynalda Chantika Az-Zahra', status: 'LULUS', dob: '2012-10-12', average: 93.82 },
+            { nisn: '0127354944', name: 'Syalwa Septi Restiana', status: 'LULUS', dob: '2012-09-01', average: 92.26 },
+            { nisn: '0129168909', name: 'Syifa Aulia Fitria', status: 'LULUS', dob: '2012-07-11', average: 95.36 },
+            { nisn: '0132251140', name: 'Valda Salsabilla Putri Andriansyah', status: 'LULUS', dob: '2013-05-01', average: 92.74 },
+            { nisn: '3124389470', name: 'Abdul Azis Utomo', status: 'LULUS', dob: '2012-10-13', average: 92.75 },
+            { nisn: '3127646675', name: 'Adara Azkayra Janitra', status: 'LULUS', dob: '2012-06-06', average: 95.14 },
+            { nisn: '3126751234', name: 'Adeline Chandra Kurniawan', status: 'LULUS', dob: '2012-09-05', average: 95.68 },
+            { nisn: '0125812895', name: 'Afifah Fitiyah', status: 'LULUS', dob: '2012-11-13', average: 94.02 },
+            { nisn: '0124982708', name: 'Alqiano Arza Setiawan', status: 'LULUS', dob: '2012-06-19', average: 92.74 },
+            { nisn: '3122331893', name: 'Alvy Karimatil Marifah', status: 'LULUS', dob: '2012-05-26', average: 93.97 },
+            { nisn: '3125177756', name: 'Anwar Sururi', status: 'LULUS', dob: '2012-03-03', average: 91.02 },
+            { nisn: '3128120633', name: 'Desti Aulia Anggraini', status: 'LULUS', dob: '2012-12-05', average: 91.50 },
+            { nisn: '3124148934', name: 'Dinara Fitriana', status: 'LULUS', dob: '2012-09-01', average: 95.36 },
+            { nisn: '3124127490', name: 'Farel Atharis Chalief', status: 'LULUS', dob: '2012-10-09', average: 92.97 },
+            { nisn: '0125453895', name: 'Ibrahim Nurrudin', status: 'LULUS', dob: '2012-10-09', average: 91.25 },
+            { nisn: '0136130718', name: 'Kaila Siskia Aminah', status: 'LULUS', dob: '2013-05-02', average: 92.60 },
+            { nisn: '0134064978', name: 'Kayla Putri', status: 'LULUS', dob: '2013-03-29', average: 91.86 },
+            { nisn: '3123177776', name: 'Kellie Tham', status: 'LULUS', dob: '2012-11-27', average: 94.02 },
+            { nisn: '0125465334', name: 'Labibah Dhiya\'ulhaq', status: 'LULUS', dob: '2012-11-18', average: 93.18 },
+            { nisn: '0124235451', name: 'Mohammad Ibnu Damar', status: 'LULUS', dob: '2012-06-05', average: 92.10 },
+            { nisn: '0138827741', name: 'Muhammad Bakti', status: 'LULUS', dob: '2013-01-18', average: 91.63 },
+            { nisn: '3124755532', name: 'Muhammad Haikal Al Fuadi', status: 'LULUS', dob: '2012-05-19', average: 93.74 },
+            { nisn: '3131283620', name: 'Nahdah Salsabila', status: 'LULUS', dob: '2013-03-22', average: 93.84 },
+            { nisn: '3131210145', name: 'Putri Ayu Nur Khotimah', status: 'LULUS', dob: '2013-04-06', average: 92.16 },
+            { nisn: '0136949261', name: 'Savira Febiola', status: 'LULUS', dob: '2013-02-01', average: 92.24 },
+            { nisn: '0112617291', name: 'Suci Rahmawati', status: 'LULUS', dob: '2011-10-27', average: 92.11 },
+            { nisn: '3117769965', name: 'Winie Stievani', status: 'LULUS', dob: '2011-09-18', average: 93.79 },
+            { nisn: '0131227346', name: 'Zaidan Alfarizi', status: 'LULUS', dob: '2013-05-03', average: 92.28 },
+            { nisn: '3127421671', name: 'Zuko Athalla Al Aufa Iqbal', status: 'LULUS', dob: '2012-08-22', average: 93.13 },
+            { nisn: '0121618970', name: 'Alwisyah Putri', status: 'LULUS', dob: '2012-04-12', average: 92.47 },
+            { nisn: '3121976786', name: 'Alya Fahriza', status: 'LULUS', dob: '2011-10-04', average: 95.10 },
+            { nisn: '3134456640', name: 'Amanda Fathiyyah', status: 'LULUS', dob: '2013-02-06', average: 92.64 },
+            { nisn: '0121274046', name: 'Ananda Sarah Amaliah', status: 'LULUS', dob: '2012-06-27', average: 90.69 },
+            { nisn: '0124439303', name: 'Aninda Diaz Astriani', status: 'LULUS', dob: '2012-03-15', average: 92.24 },
+            { nisn: '3121021173', name: 'Elmi Raihanan', status: 'LULUS', dob: '2012-09-11', average: 92.67 },
+            { nisn: '3132333716', name: 'Firli Dwi Kurniawan', status: 'LULUS', dob: '2013-01-12', average: 92.28 },
+            { nisn: '0136797857', name: 'Gibran Ahmad Kumara', status: 'LULUS', dob: '2013-06-18', average: 92.15 },
+            { nisn: '3127273580', name: 'Kenata Giovanno', status: 'LULUS', dob: '2012-12-29', average: 91.84 },
+            { nisn: '3134616176', name: 'Keyla Devanny Rasty', status: 'LULUS', dob: '2013-04-06', average: 91.79 },
+            { nisn: '3124045979', name: 'Muhammad Ibrahim Mulya Adnan', status: 'LULUS', dob: '2012-10-03', average: 93.23 },
+            { nisn: '0123326078', name: 'Muhammad Juniar Hidayat', status: 'LULUS', dob: '2012-06-03', average: 93.35 },
+            { nisn: '0131588434', name: 'Muthi\'ah Izzatunnisa', status: 'LULUS', dob: '2013-02-14', average: 93.81 },
+            { nisn: '3136520615', name: 'Naufal Rachmat Saputra', status: 'LULUS', dob: '2013-06-21', average: 90.19 },
+            { nisn: '0134260864', name: 'Nisrina Hannania Rusdi', status: 'LULUS', dob: '2013-07-01', average: 92.79 },
+            { nisn: '0112418109', name: 'Rani Novitasari', status: 'LULUS', dob: '2011-11-07', average: 89.61 },
+            { nisn: '0137339551', name: 'Rezky Alifian Valsha Nainggolan', status: 'LULUS', dob: '2013-02-15', average: 91.01 },
+            { nisn: '0122225309', name: 'Said Purnawan', status: 'LULUS', dob: '2012-06-25', average: 90.16 },
+            { nisn: '3136853557', name: 'Siti Zahra', status: 'LULUS', dob: '2013-03-15', average: 94.03 },
+            { nisn: '0139574589', name: 'Syaiful Fattah', status: 'LULUS', dob: '2013-02-03', average: 91.40 },
+            { nisn: '3131274701', name: 'Valentina Candra Zienesa', status: 'LULUS', dob: '2013-02-14', average: 92.82 },
+            { nisn: '0137754610', name: 'Viola Anastasya Prasetiyo', status: 'LULUS', dob: '2013-02-18', average: 93.70 },
+            { nisn: '0122596846', name: 'Violetta Shakila Renandra Putri', status: 'LULUS', dob: '2012-12-18', average: 93.78 }
+        ];
+
+        /**
+         * Fungsi untuk memicu efek confetti.
+         * Menggunakan library canvas-confetti.
+         */
+        function fireConfetti() {
+            // Konfigurasi confetti untuk tampilan yang meriah
+            confetti({
+                particleCount: 150, // Jumlah partikel
+                spread: 120,        // Sebaran partikel
+                origin: { y: 0.6 }, // Titik asal confetti (tengah bawah)
+                colors: ['#4CAF50', '#FFD700', '#64B5F6', '#FF6347'], // Warna-warna cerah
+                disableForReducedMotion: true // Nonaktifkan untuk pengguna dengan preferensi gerak terbatas
+            });
+
+            // Tambahkan ledakan confetti kedua dari sisi lain untuk efek lebih dramatis
+            setTimeout(() => {
+                confetti({
+                    particleCount: 100,
+                    spread: 90,
+                    origin: { x: 1, y: 0.7 }, // Dari kanan atas
+                    colors: ['#4CAF50', '#FFD700', '#64B5F6', '#FF6347'],
+                    disableForReducedMotion: true
+                });
+            }, 200); // Tunda sedikit
+            setTimeout(() => {
+                confetti({
+                    particleCount: 100,
+                    spread: 90,
+                    origin: { x: 0, y: 0.7 }, // Dari kiri atas
+                    colors: ['#4CAF50', '#FFD700', '#64B5F6', '#FF6347'],
+                    disableForReducedMotion: true
+                });
+            }, 400); // Tunda sedikit lagi
+        }
+
+        /**
+         * Fungsi untuk memeriksa status kelulusan siswa berdasarkan NISN dan Tanggal Lahir.
+         */
+        function checkGraduation() {
+            const nisnInput = document.getElementById('nisn').value.trim();
+            const dobInput = document.getElementById('dob').value; // Format YYYY-MM-DD
+
+            const resultDiv = document.getElementById('result');
+
+            // Validasi input tidak boleh kosong
+            if (!nisnInput || !dobInput) {
+                resultDiv.className = 'error'; // Menambahkan kelas 'error' untuk styling
+                resultDiv.innerHTML = 'Mohon lengkapi NISN dan Tanggal Lahir Anda.';
+                resultDiv.style.display = 'block'; // Menampilkan div hasil
+                return; // Menghentikan fungsi
+            }
+
+            // Mencari data siswa yang cocok di array studentsData
+            const student = studentsData.find(s => s.nisn === nisnInput && s.dob === dobInput);
+
+            if (student) {
+                // Jika siswa ditemukan
+                let statusBadgeClass = '';
+                let statusText = '';
+
+                // Menentukan kelas CSS dan teks status berdasarkan status kelulusan
+                if (student.status.toUpperCase() === 'LULUS') {
+                    statusBadgeClass = 'status-lulus';
+                    statusText = 'LULUS';
+                    fireConfetti(); // Panggil efek confetti jika LULUS
+                } else {
+                    statusBadgeClass = 'status-tidak-lulus';
+                    statusText = 'TIDAK LULUS';
+                }
+
+                resultDiv.className = 'success'; // Menambahkan kelas 'success' untuk styling umum
+                resultDiv.innerHTML = `
+                    <p>Nama: <strong>${student.name}</strong></p>
+                    <p>NISN: <strong>${student.nisn}</strong></p>
+                    <p>Rerata Nilai: <strong>${student.average.toFixed(2)}</strong></p>
+                    <p>Status Kelulusan: <span class="status-badge ${statusBadgeClass}">${statusText}</span></p>
+                `;
+                resultDiv.style.display = 'block'; // Menampilkan div hasil
+            } else {
+                // Jika siswa tidak ditemukan
+                resultDiv.className = 'error'; // Menambahkan kelas 'error'
+                resultDiv.innerHTML = 'Data tidak ditemukan. Pastikan NISN dan Tanggal Lahir Anda benar.';
+                resultDiv.style.display = 'block'; // Menampilkan div hasil
+            }
+        }
+    </script>
+</body>
+</html>
